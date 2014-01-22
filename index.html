@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>网站截图</title>.
+		<style>
+			.clear{padding:0;margin:0;}
+			.main{width:1366px;margin:0 auto;}
+			.input_url{width:502px;height:40px;margin:0 auto;}
+			#url{border:1px solid #CFCFCF;color:#9B9B9B;height:22px;line-height:22px;border-radius:2px 2px 2px 2px;padding:5px 0 5px 5px;width:410px;float:left;}
+			#go{background-color:#F5F5F5;background-image:-moz-linear-gradient(center top,#F5F5F5,#F1F1F1);border:1px solid #CFCFCF;border-radius:2px 2px 2px 2px;color:#666666;font-size:12px;font-weight:bold;height:34px;line-height:32px;min-width:54px;padding:0 8px;text-align:center;float:left;margin-left:5px;}
+			.pic{width:1366;margin:0 auto;margin-top:30px;text-align:center;}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="input_url">
+				<center>
+					<input type="text" id="url" name="url" placeholder="请输入网址" />
+					<input type="button" id="go" value="马上截取" onclick="return go();" />
+				</center>
+			</div>
+			<div class="clear">
+				<div class="pic">
+					<img id="img" src="" onload="done();"/>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function go() {
+				document.getElementById("go").value = "截取中";
+				document.getElementById("go").setAttribute("disabled", "disabled");
+
+				document.getElementById("img").setAttribute("src", "");
+				var url = encodeURIComponent(document.getElementById("url").value);
+				document.getElementById("img").setAttribute("src", "take.php?url=" + url);
+
+				return false;
+			}
+			function done() {
+				document.getElementById("go").value = "马上截取";
+				document.getElementById("go").removeAttribute("disabled");
+			}
+		</script>
+	</body>
+</html>
